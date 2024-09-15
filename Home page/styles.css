@@ -1,0 +1,107 @@
+/* Reset basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling with background image */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url("1234.png");  /* Add your image file path here */
+    background-size: cover;                   /* Ensure the image covers the whole background */
+    background-position: center;              /* Center the image */
+    background-repeat: no-repeat;             /* Prevent image from repeating */
+    font-family: 'Arial', sans-serif;
+}
+
+/* Container for the buttons */
+.button-container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Base button styles */
+.round-button {
+    position: relative;
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 20px 40px;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.23);
+    overflow: hidden;
+    z-index: 1;
+}
+
+.round-button:hover {
+    background: linear-gradient(135deg, #ff512f, #dd2476);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 10px 10px rgba(0, 0, 0, 0.2);
+    transform: scale(1.1);
+}
+
+/* Glowing effect */
+.round-button::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 80%);
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.round-button:hover::after {
+    opacity: 1;
+    animation: glow 1.5s infinite;
+}
+
+/* Ripple effect on click */
+.round-button:active::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: ripple 0.6s linear;
+}
+
+@keyframes ripple {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+    100% {
+        width: 300%;
+        height: 300%;
+        opacity: 0;
+    }
+}
+
+/* Glowing animation */
+@keyframes glow {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
